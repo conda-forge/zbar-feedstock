@@ -7,19 +7,20 @@ package:
   version: {{ version }}
 
 source:
-  url: http://sourceforge.net/projects/{{name}}/files/{{name}}/{{version}}/{{name}}-{{version}}.tar.bz2
+  url: http://sourceforge.net/projects/{{ name }}/files/{{ name }}/{{ version }}/{{ name }}-{{ version }}.tar.bz2
   sha256: {{ sha256 }}
   patches:
     - 0001-Add-cstddef-header-to-zbar.h-for-NULL.patch
 
 build:
-  number: 1000
+  number: 1001
   skip: True  # [win]
 
 requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make    # [unix]
   host:
     - libjpeg-turbo
   run:
@@ -34,7 +35,7 @@ test:
 
 about:
   home: http://zbar.sourceforge.net/
-  license: LGPL-2.1
+  license: LGPL-2.1-only
   license_family: LGPL
   license_file: COPYING
   summary: 'Zbar barcode reader library'
@@ -50,4 +51,7 @@ about:
 
 extra:
   recipe-maintainers:
-    - kdmurray91
+    # Stopped exiting
+    # - kdmurray91
+    # Just adding myself here to help from time to time
+    - hmaarrfk
