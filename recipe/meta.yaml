@@ -51,4 +51,7 @@ about:
 
 extra:
   recipe-maintainers:
-    - kdmurray91
+    # Stopped exiting
+    # - kdmurray91
+    # Just adding myself here to help from time to time
+    - hmaarrfk
