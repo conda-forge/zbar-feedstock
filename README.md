@@ -5,7 +5,7 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/zbar-feedstock/
 
 Home: http://zbar.sourceforge.net/
 
-Package license: LGPL-2.1
+Package license: LGPL-2.1-only
 
 Summary: Zbar barcode reader library
 
@@ -180,5 +180,5 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@kdmurray91](https://github.com/kdmurray91/)
+* [@hmaarrfk](https://github.com/hmaarrfk/)
 
