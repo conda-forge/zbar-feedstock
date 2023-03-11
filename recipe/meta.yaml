@@ -20,6 +20,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - make    # [unix]
   host:
     - libjpeg-turbo
   run:
@@ -34,7 +35,7 @@ test:
 
 about:
   home: http://zbar.sourceforge.net/
-  license: LGPL-2.1
+  license: LGPL-2.1-only
   license_family: LGPL
   license_file: COPYING
   summary: 'Zbar barcode reader library'
