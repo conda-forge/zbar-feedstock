@@ -1,4 +1,4 @@
-†{% set name = "zbar" %}
+{% set name = "zbar" %}
 {% set version = "0.10" %}
 {% set sha256 = "234efb39dbbe5cef4189cc76f37afbe3cfcfb45ae52493bfe8e191318bdbadc6" %}
 
