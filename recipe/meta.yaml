@@ -25,6 +25,7 @@ requirements:
     - automake  # [unix]
     - libtool   # [unix]
     - m4  # [unix]
+    - gettext
   host:
     - libjpeg-turbo
   run:
