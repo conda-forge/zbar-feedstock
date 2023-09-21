@@ -23,6 +23,7 @@ requirements:
     - make    # [unix]
     - autoconf  # [unix]
     - automake  # [unix]
+    - autoconf-archive   # [unix]
     - libtool   # [unix]
     - m4  # [unix]
     - gettext
