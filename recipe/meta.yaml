@@ -1,4 +1,4 @@
-{% set name = "zbar" %}
+†{% set name = "zbar" %}
 {% set version = "0.10" %}
 {% set sha256 = "234efb39dbbe5cef4189cc76f37afbe3cfcfb45ae52493bfe8e191318bdbadc6" %}
 
@@ -13,7 +13,7 @@ source:
     - 0001-Add-cstddef-header-to-zbar.h-for-NULL.patch
 
 build:
-  number: 1001
+  number: 1002
   skip: True  # [win]
 
 requirements:
