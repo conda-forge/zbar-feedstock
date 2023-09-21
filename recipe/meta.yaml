@@ -21,7 +21,9 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - make    # [unix]
-    - automake   # [unix]
+    - autoconf  # [unix]
+    - automake  # [unix]
+    - libtool   # [unix]
   host:
     - libjpeg-turbo
   run:
