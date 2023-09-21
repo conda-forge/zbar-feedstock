@@ -1,6 +1,6 @@
 {% set name = "zbar" %}
 {% set version = "0.10" %}
-{% set sha256 = "234efb39dbbe5cef4189cc76f37afbe3cfcfb45ae52493bfe8e191318bdbadc6" %}
+{% set sha256 = "ce698c689f96bf889b107ab2b926a285e082ecf3c448b9ad68deab4b86a44ab9" %}
 
 package:
   name: {{ name|lower }}
