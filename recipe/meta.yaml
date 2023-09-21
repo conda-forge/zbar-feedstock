@@ -27,6 +27,7 @@ requirements:
     - libtool   # [unix]
     - m4  # [unix]
     - gettext
+    - Intltool
   host:
     - libjpeg-turbo
   run:
