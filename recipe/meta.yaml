@@ -7,13 +7,13 @@ package:
   version: {{ version }}
 
 source:
-  url: http://sourceforge.net/projects/{{ name }}/files/{{ name }}/{{ version }}/{{ name }}-{{ version }}.tar.bz2
+  url: url: https://github.com/mchehab/{{ name }}/archive/{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - 0001-Add-cstddef-header-to-zbar.h-for-NULL.patch
 
 build:
-  number: 1001
+  number: 1002
   skip: True  # [win]
 
 requirements:
@@ -55,3 +55,4 @@ extra:
     # - kdmurray91
     # Just adding myself here to help from time to time
     - hmaarrfk
+    - jan-janssen
