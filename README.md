@@ -188,4 +188,5 @@ Feedstock Maintainers
 =====================
 
 * [@hmaarrfk](https://github.com/hmaarrfk/)
+* [@jan-janssen](https://github.com/jan-janssen/)
 
