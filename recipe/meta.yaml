@@ -1,14 +1,12 @@
-{% set name = "zbar" %}
 {% set version = "0.10" %}
-{% set sha256 = "234efb39dbbe5cef4189cc76f37afbe3cfcfb45ae52493bfe8e191318bdbadc6" %}
 
 package:
-  name: {{ name|lower }}
+  name: zbar
   version: {{ version }}
 
 source:
-  url: http://sourceforge.net/projects/{{ name }}/files/{{ name }}/{{ version }}/{{ name }}-{{ version }}.tar.bz2
-  sha256: {{ sha256 }}
+  url: http://sourceforge.net/projects/zbar/files/zbar/{{ version }}/zbar-{{ version }}.tar.bz2
+  sha256: 234efb39dbbe5cef4189cc76f37afbe3cfcfb45ae52493bfe8e191318bdbadc6
   patches:
     - 0001-Add-cstddef-header-to-zbar.h-for-NULL.patch
 
@@ -18,6 +16,7 @@ build:
 
 requirements:
   build:
+    - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - make    # [unix]
@@ -51,6 +50,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - jan-janssen
     # Stopped exiting
     # - kdmurray91
     # Just adding myself here to help from time to time
