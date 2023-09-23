@@ -50,6 +50,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - jan-janssen
     # Stopped exiting
     # - kdmurray91
     # Just adding myself here to help from time to time
