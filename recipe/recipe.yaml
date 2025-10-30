@@ -21,6 +21,7 @@ requirements:
   build:
     - if: unix
       then: gnuconfig
+    - ${{ stdlib("c") }}
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - if: unix
