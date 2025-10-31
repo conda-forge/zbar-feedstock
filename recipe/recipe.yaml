@@ -28,6 +28,7 @@ requirements:
       then: make
   host:
     - python
+    - setuptools
     - libjpeg-turbo
   run:
     - libjpeg-turbo
