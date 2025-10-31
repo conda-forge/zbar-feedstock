@@ -28,8 +28,10 @@ requirements:
   host:
     - python
     - setuptools
+    - gettext
     - libjpeg-turbo
   run:
+    - python
     - libjpeg-turbo
 
 tests:
