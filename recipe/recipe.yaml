@@ -27,6 +27,7 @@ requirements:
     - if: unix
       then: make
   host:
+    - python
     - libjpeg-turbo
   run:
     - libjpeg-turbo
@@ -52,8 +53,8 @@ about:
     supports many popular symbologies (types of bar codes) including
     EAN-13/UPC-A, UPC-E, EAN-8, Code 128, Code 39, Interleaved 2 of 5 and QR
     Code.
-  homepage: http://zbar.sourceforge.net/
-  repository: https://github.com/ZBar/ZBar
+  homepage: https://github.com/mchehab/zbar
+  repository: https://github.com/mchehab/zbar
   documentation: https://sourceforge.net/projects/zbar/
 
 extra:
