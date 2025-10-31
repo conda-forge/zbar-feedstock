@@ -29,6 +29,7 @@ requirements:
     - python
     - setuptools
     - gettext
+    - libtool
     - libjpeg-turbo
   run:
     - python
