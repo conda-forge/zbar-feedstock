@@ -24,12 +24,13 @@ requirements:
     - ${{ compiler('cxx') }}
     - autoconf
     - automake
+    - libtool
+    - pkg-config
     - make
   host:
     - python
     - setuptools
     - gettext
-    - libtool
     - libjpeg-turbo
   run:
     - python
