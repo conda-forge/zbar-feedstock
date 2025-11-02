@@ -27,6 +27,7 @@ requirements:
     - libtool
     - pkg-config
     - make
+    - python
   host:
     - python
     - setuptools
