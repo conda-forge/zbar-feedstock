@@ -22,6 +22,7 @@ requirements:
     - ${{ stdlib("c") }}
     - make
     - autoconf
+    - automake
     - libtool
     - pkg-config
     - gettext
