@@ -26,11 +26,13 @@ requirements:
     - libtool
     - pkg-config
     - gettext
-    - libiconv # [osx]
+    - if osx:
+      then: libiconv
   host:
     - python
     - libjpeg-turbo
-    - libiconv # [osx]
+    - if osx:
+      then: libiconv
   run:
     - python
     - libjpeg-turbo
