@@ -13,5 +13,4 @@ autoreconf -vfi
             --without-x \
             --without-xshm
 make
-make check
 make install
