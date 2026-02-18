@@ -27,8 +27,10 @@ requirements:
     - pkg-config
     - gettext
   host:
+    - python
     - libjpeg-turbo
   run:
+    - python
     - libjpeg-turbo
 
 tests:
