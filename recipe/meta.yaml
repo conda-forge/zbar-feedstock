@@ -11,7 +11,7 @@ source:
     - 0001-Add-cstddef-header-to-zbar.h-for-NULL.patch
 
 build:
-  number: 1002
+  number: 1003
   skip: True  # [win]
 
 requirements:
@@ -19,6 +19,7 @@ requirements:
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - make    # [unix]
   host:
     - libjpeg-turbo
@@ -50,6 +51,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - carlodri
     - jan-janssen
     # Stopped exiting
     # - kdmurray91
