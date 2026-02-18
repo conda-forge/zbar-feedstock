@@ -1,20 +1,18 @@
 schema_version: 1
 
 context:
-  version: 0.10
+  version: 0.23.93
 
 package:
   name: zbar
   version: ${{ version }}
 
 source:
-  url: http://sourceforge.net/projects/zbar/files/zbar/${{ version }}/zbar-${{ version }}.tar.bz2
-  sha256: 234efb39dbbe5cef4189cc76f37afbe3cfcfb45ae52493bfe8e191318bdbadc6
-  patches:
-    - 0001-Add-cstddef-header-to-zbar.h-for-NULL.patch
+  url: https://github.com/mchehab/zbar/archive/${{ version }}.tar.gz
+  sha256: 212dfab527894b8bcbcc7cd1d43d63f5604a07473d31a5f02889e372614ebe28
 
 build:
-  number: 1004
+  number: 0
   skip: win
 
 requirements:
@@ -44,7 +42,7 @@ tests:
 
 about:
   license: LGPL-2.1-only
-  license_file: COPYING
+  license_file: LICENSE.md
   summary: Zbar barcode reader library
   description: |
     ZBar is an open source software suite for reading bar codes from various
@@ -52,15 +50,10 @@ about:
     supports many popular symbologies (types of bar codes) including
     EAN-13/UPC-A, UPC-E, EAN-8, Code 128, Code 39, Interleaved 2 of 5 and QR
     Code.
-  homepage: http://zbar.sourceforge.net/
-  repository: https://github.com/ZBar/ZBar
-  documentation: https://sourceforge.net/projects/zbar/
+  homepage: https://github.com/mchehab/zbar
 
 extra:
   recipe-maintainers:
     - carlodri
     - jan-janssen
-    # Stopped exiting
-    # - kdmurray91
-    # Just adding myself here to help from time to time
     - hmaarrfk
