@@ -26,7 +26,7 @@ requirements:
     - libtool
     - pkg-config
     - gettext
-    - if osx:
+    - if: osx
       then: libiconv
   host:
     - python
