@@ -33,6 +33,8 @@ requirements:
     - libjpeg-turbo
     - if osx:
       then: libiconv
+    - if osx:
+      then: libiconv
   run:
     - python
     - libjpeg-turbo
