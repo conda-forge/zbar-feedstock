@@ -31,9 +31,7 @@ requirements:
   host:
     - python
     - libjpeg-turbo
-    - if osx:
-      then: libiconv
-    - if osx:
+    - if: osx
       then: libiconv
   run:
     - python
