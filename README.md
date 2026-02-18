@@ -19,7 +19,6 @@ supports many popular symbologies (types of bar codes) including
 EAN-13/UPC-A, UPC-E, EAN-8, Code 128, Code 39, Interleaved 2 of 5 and QR
 Code.
 
-
 Current build status
 ====================
 
