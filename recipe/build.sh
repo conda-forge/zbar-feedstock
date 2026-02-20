@@ -6,6 +6,8 @@ set -exo pipefail
 # archive data is not available in the build environment, so stub it out.
 if [[ "${target_platform}" == win-* ]]; then
     export AUTOPOINT=true
+    # Make aclocal find the m4 macros from conda-installed gettext and libiconv
+    export ACLOCAL_PATH="${BUILD_PREFIX}/Library/share/aclocal:${ACLOCAL_PATH:-}"
 fi
 
 autoreconf -vfi

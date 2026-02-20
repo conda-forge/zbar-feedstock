@@ -27,7 +27,7 @@ requirements:
         - libtool
         - pkg-config
     - gettext
-    - if: osx
+    - if: osx or win
       then: libiconv
     - if: win
       then: autotools_clang_conda
