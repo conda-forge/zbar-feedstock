@@ -1,13 +1,19 @@
 #!/bin/bash
 set -exo pipefail
 
-# The release tarball already ships a working configure script.
-# On Windows, autoreconf fails because autoconf cannot find its m4 data
-# in the mixed MSYS2+conda environment. We skip it on Windows since the
-# shipped configure is perfectly usable.
-if [[ "${target_platform}" != win-* ]]; then
-    autoreconf -vfi
+if [[ "${target_platform}" == win-* ]]; then
+    export AUTOPOINT=true
+    # On Windows, autoconf cannot find its own m4 data directory via the
+    # conda-installed binary. Point it explicitly to the right location.
+    export AUTOCONF="${BUILD_PREFIX}/Library/usr/bin/autoconf"
+    export AUTOHEADER="${BUILD_PREFIX}/Library/usr/bin/autoheader"
+    export AUTOMAKE="${BUILD_PREFIX}/Library/usr/bin/automake"
+    export ACLOCAL="${BUILD_PREFIX}/Library/usr/bin/aclocal"
+    export ACLOCAL_PATH="${BUILD_PREFIX}/Library/usr/share/aclocal:${ACLOCAL_PATH:-}"
+    export M4PATH="${BUILD_PREFIX}/Library/usr/share/autoconf:${BUILD_PREFIX}/Library/usr/share/aclocal:${M4PATH:-}"
 fi
+
+autoreconf -vfi
 
 CONFIGURE_ARGS=(
     --prefix=$PREFIX
