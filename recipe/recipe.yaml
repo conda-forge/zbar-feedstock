@@ -54,8 +54,9 @@ tests:
         then: bash -c "test -d $PREFIX/include/zbar && test -f $PREFIX/include/zbar/ImageScanner.h"
       - if: win
         then:
-          - if not exist %LIBRARY_BIN%\zbar.dll exit 1
+          - if not exist %LIBRARY_BIN%\libzbar-0.dll exit 1
           - if not exist %LIBRARY_INC%\zbar\ImageScanner.h exit 1
+      - zbarimg --help
 
 about:
   license: LGPL-2.1-only

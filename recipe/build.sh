@@ -1,13 +1,14 @@
 #!/bin/bash
 set -exo pipefail
 
-autoreconf -vfi
-
-# autotools_clang_conda provides this on Windows to fix libtool DLL generation;
-# on Unix it is not present so we skip it safely.
+# The release tarball already ships the gettext infrastructure files that
+# autopoint would generate. autopoint fails on Windows because the gettext
+# archive data is not available in the build environment, so stub it out.
 if [[ "${target_platform}" == win-* ]]; then
-    patch_libtool
+    export AUTOPOINT=true
 fi
+
+autoreconf -vfi
 
 CONFIGURE_ARGS=(
     --prefix=$PREFIX
@@ -28,6 +29,12 @@ else
 fi
 
 ./configure "${CONFIGURE_ARGS[@]}"
+
+# patch_libtool is provided by autotools_clang_conda on Windows; it must be
+# called after configure to fix the generated libtool script for DLL creation.
+if [[ "${target_platform}" == win-* ]]; then
+    patch_libtool
+fi
 
 make
 make install
