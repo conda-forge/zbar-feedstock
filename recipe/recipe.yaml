@@ -20,10 +20,12 @@ requirements:
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
     - make
-    - autoconf
-    - automake
-    - libtool
-    - pkg-config
+    - if: not win
+      then:
+        - autoconf
+        - automake
+        - libtool
+        - pkg-config
     - gettext
     - if: osx
       then: libiconv
