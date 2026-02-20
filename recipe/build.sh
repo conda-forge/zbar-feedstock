@@ -3,14 +3,13 @@ set -exo pipefail
 
 if [[ "${target_platform}" == win-* ]]; then
     export AUTOPOINT=true
-    # On Windows, autoconf cannot find its own m4 data directory via the
-    # conda-installed binary. Point it explicitly to the right location.
-    export AUTOCONF="${BUILD_PREFIX}/Library/usr/bin/autoconf"
-    export AUTOHEADER="${BUILD_PREFIX}/Library/usr/bin/autoheader"
-    export AUTOMAKE="${BUILD_PREFIX}/Library/usr/bin/automake"
-    export ACLOCAL="${BUILD_PREFIX}/Library/usr/bin/aclocal"
-    export ACLOCAL_PATH="${BUILD_PREFIX}/Library/usr/share/aclocal:${ACLOCAL_PATH:-}"
-    export M4PATH="${BUILD_PREFIX}/Library/usr/share/autoconf:${BUILD_PREFIX}/Library/usr/share/aclocal:${M4PATH:-}"
+    # aclocal is an MSYS2 tool and needs MSYS2-style paths.
+    # The conda build prefix on Windows is e.g. D:/bld/.../build_env/Library,
+    # which in MSYS2 bash appears as /d/bld/.../build_env/Library.
+    # Convert BUILD_PREFIX to an MSYS2 path and point aclocal to the m4 files
+    # installed there by conda packages (gettext, libiconv).
+    _build_prefix_msys=$(cygpath -u "${BUILD_PREFIX}")
+    export ACLOCAL_PATH="${_build_prefix_msys}/Library/usr/share/aclocal:${_build_prefix_msys}/Library/share/aclocal:${ACLOCAL_PATH:-}"
 fi
 
 autoreconf -vfi
