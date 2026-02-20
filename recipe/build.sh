@@ -1,22 +1,13 @@
 #!/bin/bash
 set -exo pipefail
 
-# The release tarball already ships the gettext infrastructure files that
-# autopoint would generate. autopoint fails on Windows because the gettext
-# archive data is not available in the build environment, so stub it out.
-if [[ "${target_platform}" == win-* ]]; then
-    export AUTOPOINT=true
-    # Force autoreconf to use the conda-installed autotools, not the MSYS2 system ones.
-    # The MSYS2 /usr/bin/autoconf cannot find its own m4 data in this environment.
-    # On Windows, conda-forge autotools install to Library/usr/bin/, not Library/bin/.
-    export AUTOCONF="${BUILD_PREFIX}/Library/usr/bin/autoconf"
-    export AUTOHEADER="${BUILD_PREFIX}/Library/usr/bin/autoheader"
-    export AUTOMAKE="${BUILD_PREFIX}/Library/usr/bin/automake"
-    export ACLOCAL="${BUILD_PREFIX}/Library/usr/bin/aclocal"
-    export ACLOCAL_PATH="${BUILD_PREFIX}/Library/usr/share/aclocal:${ACLOCAL_PATH:-}"
+# The release tarball already ships a working configure script.
+# On Windows, autoreconf fails because autoconf cannot find its m4 data
+# in the mixed MSYS2+conda environment. We skip it on Windows since the
+# shipped configure is perfectly usable.
+if [[ "${target_platform}" != win-* ]]; then
+    autoreconf -vfi
 fi
-
-autoreconf -vfi
 
 CONFIGURE_ARGS=(
     --prefix=$PREFIX
