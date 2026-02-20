@@ -8,11 +8,12 @@ if [[ "${target_platform}" == win-* ]]; then
     export AUTOPOINT=true
     # Force autoreconf to use the conda-installed autotools, not the MSYS2 system ones.
     # The MSYS2 /usr/bin/autoconf cannot find its own m4 data in this environment.
-    export AUTOCONF="${BUILD_PREFIX}/Library/bin/autoconf"
-    export AUTOHEADER="${BUILD_PREFIX}/Library/bin/autoheader"
-    export AUTOMAKE="${BUILD_PREFIX}/Library/bin/automake"
-    export ACLOCAL="${BUILD_PREFIX}/Library/bin/aclocal"
-    export ACLOCAL_PATH="${BUILD_PREFIX}/Library/share/aclocal:${ACLOCAL_PATH:-}"
+    # On Windows, conda-forge autotools install to Library/usr/bin/, not Library/bin/.
+    export AUTOCONF="${BUILD_PREFIX}/Library/usr/bin/autoconf"
+    export AUTOHEADER="${BUILD_PREFIX}/Library/usr/bin/autoheader"
+    export AUTOMAKE="${BUILD_PREFIX}/Library/usr/bin/automake"
+    export ACLOCAL="${BUILD_PREFIX}/Library/usr/bin/aclocal"
+    export ACLOCAL_PATH="${BUILD_PREFIX}/Library/usr/share/aclocal:${ACLOCAL_PATH:-}"
 fi
 
 autoreconf -vfi
