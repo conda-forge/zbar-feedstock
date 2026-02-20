@@ -6,7 +6,12 @@ set -exo pipefail
 # archive data is not available in the build environment, so stub it out.
 if [[ "${target_platform}" == win-* ]]; then
     export AUTOPOINT=true
-    # Make aclocal find the m4 macros from conda-installed gettext and libiconv
+    # Force autoreconf to use the conda-installed autotools, not the MSYS2 system ones.
+    # The MSYS2 /usr/bin/autoconf cannot find its own m4 data in this environment.
+    export AUTOCONF="${BUILD_PREFIX}/Library/bin/autoconf"
+    export AUTOHEADER="${BUILD_PREFIX}/Library/bin/autoheader"
+    export AUTOMAKE="${BUILD_PREFIX}/Library/bin/automake"
+    export ACLOCAL="${BUILD_PREFIX}/Library/bin/aclocal"
     export ACLOCAL_PATH="${BUILD_PREFIX}/Library/share/aclocal:${ACLOCAL_PATH:-}"
 fi
 
