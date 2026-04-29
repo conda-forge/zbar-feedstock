@@ -13,7 +13,6 @@ source:
 
 build:
   number: 1
-  skip: win
 
 requirements:
   build:
@@ -21,21 +20,27 @@ requirements:
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
     - make
-    - autoconf
-    - automake
-    - libtool
-    - pkg-config
+    - if: not win
+      then:
+        - autoconf
+        - automake
+        - libtool
+        - pkg-config
     - gettext
-    - if: osx
+    - if: osx or win
       then: libiconv
+    - if: win
+      then: autotools_clang_conda
   host:
     - python
     - libjpeg-turbo
-    - if: osx
+    - if: osx or win
       then: libiconv
   run:
     - python
     - libjpeg-turbo
+    - if: osx or win
+      then: libiconv
 
 tests:
   - script:
@@ -47,6 +52,10 @@ tests:
         then: bash -c "test -f $PREFIX/lib/libzbar.dylib"
       - if: unix
         then: bash -c "test -d $PREFIX/include/zbar && test -f $PREFIX/include/zbar/ImageScanner.h"
+      - if: win
+        then:
+          - if not exist %LIBRARY_BIN%\libzbar-0.dll exit 1
+          - if not exist %LIBRARY_INC%\zbar\ImageScanner.h exit 1
 
 about:
   license: LGPL-2.1-only
