@@ -20,10 +20,8 @@ requirements:
     - ${{ compiler('c') }}
     - ${{ compiler('cxx') }}
     - ${{ stdlib("c") }}
-    - make
-    - autoconf
-    - automake
-    - libtool
+    - meson
+    - ninja
     - pkg-config
     - gettext
     - if: osx
