@@ -12,7 +12,7 @@ source:
   sha256: 3bad3fe7b8764c6e2131cba91d40e22567a1365352914b62b55247b49124ed33
 
 build:
-  number: 0
+  number: 1
   skip: win
 
 requirements:
@@ -22,7 +22,7 @@ requirements:
     - ${{ stdlib("c") }}
     - meson
     - ninja
-    - pkg-config
+    - pkgconf
     - gettext
     - if: osx
       then: libiconv
